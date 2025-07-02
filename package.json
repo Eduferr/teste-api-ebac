@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npx serverest --porta 3500",
+    "start": "npx serverest",
     "test": "npx cypress run"
 
   },
