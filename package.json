@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npx serverest",
-    "test": "npx cypress run"
+    "test": "npx cypress run",
+    "cy":"npx cypress run"
   },
   "keywords": [],
   "author": "",
