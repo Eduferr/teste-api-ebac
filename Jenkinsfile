@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('gitClone') {
             steps {
-                git branch: 'main', url: 'https://github.com/Eduferr/teste-api-ebac.git'
-                sh 'npm install'
+                git branch: 'main', url: 'https://github.com/Eduferr/teste-api-ebac.git'                
             }
         }
         stage('instalDependencia') {
