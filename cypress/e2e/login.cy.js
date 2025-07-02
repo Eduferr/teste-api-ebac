@@ -6,8 +6,8 @@ describe('Teste de API - Login', () => {
       method: 'POST',
       url: 'login',
       body: {
-              "email": "edu@qa.com",
-              "password": "123456"
+              "email": "Fulano@qa.com.br",
+              "password": "teste"
             }
     }).then((Response) =>{
       cy.log(Response.body.authorization)

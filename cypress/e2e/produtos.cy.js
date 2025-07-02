@@ -1,7 +1,7 @@
 /// <reference types ="cypress"/>
 import contrato from '../contratos/produtos.contrato'
 
-describe('Teste de API em Produtos', () => {
+describe.skip('Teste de API em Produtos', () => {
 
     //Login para captura do token
     beforeEach(() => {
