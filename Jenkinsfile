@@ -2,13 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('gitClone') {
+        stage('setup') {
             steps {
-                git branch: 'main', url: 'https://github.com/Eduferr/teste-api-ebac.git'                
-            }
-        }
-        stage('instalDependencia') {
-            steps {
+                git branch: 'main', url: 'https://github.com/Eduferr/teste-api-ebac.git' 
                 sh 'npm install'
             }
         }
