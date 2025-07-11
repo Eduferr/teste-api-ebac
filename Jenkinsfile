@@ -10,12 +10,12 @@ pipeline {
         }
         stage('servidorUp') {
             steps {
-                sh 'npm start &'
+                bat 'npm start &'
             }
         }
         stage('Test') {
             steps {
-                sh 'NO_COLOR=1 npm test'
+                bat 'NO_COLOR=1 npm test'
             }
         }
     }
