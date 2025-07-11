@@ -10,7 +10,7 @@ pipeline {
         }
         stage('servidorUp') {
             steps {
-                sh 'npm start'
+                sh 'npm start &'
             }
         }
         stage('Test') {
