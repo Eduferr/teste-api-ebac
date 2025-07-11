@@ -1,6 +1,10 @@
 pipeline {
     agent any
-
+        stage('servidorUp') {
+            steps {
+                sh 'npm start &'
+            }
+        }
     stages {
         stage('setup') {
             steps {
@@ -8,11 +12,7 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('servidorUp') {
-            steps {
-                sh 'npm start &'
-            }
-        }
+
         stage('Test') {
             steps {
                 sh 'NO_COLOR=1 npm test'
