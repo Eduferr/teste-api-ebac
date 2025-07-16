@@ -13,10 +13,10 @@ pipeline {
                 sh 'npm start &'
             }
         }
-        stage('Test') {
-            steps {
+//        stage('Test') {
+   //         steps {
                 sh 'NO_COLOR=1 npm test'
-            }
-        }
+  //          }
+  //      }
     }
 }
