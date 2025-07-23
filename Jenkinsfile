@@ -14,7 +14,7 @@ pipeline {
                 // Inicia o servidor em segundo plano, com output em arquivo log
                 sh 'nohup npm start > server.log 2>&1 &'
                 // Aguarda alguns segundos para garantir que o servidor esteja online
-               sleep(time: 10, unit: 'SECONDS')
+               sleep(time: 50, unit: 'SECONDS')
             }
         }
         stage('Test') {
