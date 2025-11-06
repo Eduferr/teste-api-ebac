@@ -1,0 +1,39 @@
+# Nome do workflow que aparecerá na aba "Actions" do GitHub
+name: EBAC CI
+# Define os gatilhos que iniciam o workflow
+on:
+  push:
+    branches: [ ci ] # Executa automaticamente quando há push na branch "ci"
+  
+  workflow_dispatch: # Permite executar manualmente pelo botão "Run workflow" no GitHub
+
+# Define os jobs (conjuntos de tarefas) que o workflow executará
+jobs:
+
+  test: # Job chamado "test"
+    # Define o sistema operacional da máquina virtual (runner)
+    runs-on: ubuntu-latest  # Usa o ambiente Linux mais recente
+
+# Define as etapas (steps) que serão executadas dentro do job
+    steps:
+      # Step 1: Faz checkout do repositório para o runner (clona o código)
+      - uses: actions/checkout@v2
+      # Step 2: Configura o Node.js na versão 14
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Versão do Node usada para rodar o projeto
+      # Step 3: Executa os testes automatizados com Cypress    
+      - name: Cypress run
+        uses: cypress-io/github-action@v2 # Usa a ação oficial do Cypress
+        # Mesmo que falhe, continua para gerar relatório
+        continue-on-error: true
+        with:
+          install-command: npm install # Instala dependências do projeto
+          browser: chrome # Roda os testes no navegador Chrome
+          start: npm start # Inicia a aplicação antes de rodar os testes
+      # Step 4: Publica o relatório dos testes no GitHub Pages
+      - name: Publish Report 
+        uses: peaceiris/actions-gh-pages@v3 # Ação que publica no GitHub Pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Token de autenticação automática
+          publish_dir: ./mochawesome-report # Caminho da pasta do relatório a ser publicado
